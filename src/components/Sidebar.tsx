@@ -16,7 +16,7 @@ const Sidebar = () => {
 
     return (
         <Router>
-            <div className="sidebar">
+            <div className="sidebar fixed">
                 <div className="sidebar-items">
                     <Link to="/">
                         <div className="sidebar-item border-y-gray-900 rounded-xl">
@@ -28,7 +28,7 @@ const Sidebar = () => {
                             <img src={menuIcon} alt={"menu-icon"}/>
                         </div>
                     </Link>
-                    <Link to="/store">
+                    <Link to="/">
                         <div className="sidebar-item"
                              onMouseOver={() => setStoreHover(true)}
                              onMouseOut={() => setStoreHover(false)}

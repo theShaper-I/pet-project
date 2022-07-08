@@ -1,9 +1,7 @@
-import React from 'react';
-import clsx from 'clsx';
+import React, {FC} from 'react';
 
 interface Props {
     width: string;
-    height: string;
     bgColor: string;
     image: string;
     onClick: () => void;
@@ -12,9 +10,8 @@ interface Props {
     textColor: string;
 }
 
-const Button: React.FC<Props> = ({
+const Button: FC<Props> = ({
     width,
-    height,
     bgColor,
     image,
     onClick,
