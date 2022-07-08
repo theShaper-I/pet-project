@@ -1,6 +1,6 @@
 import React from 'react';
 
-const BagItems = () => {
+const BagItemsPage = () => {
     return (
         <div>
             bag
@@ -8,4 +8,4 @@ const BagItems = () => {
     );
 };
 
-export default BagItems;
+export default BagItemsPage;

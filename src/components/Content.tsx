@@ -2,7 +2,7 @@ import React, {FC} from 'react';
 import ItemList from "./ItemList";
 import {Product, ProductType} from "./ProductItem/product.types";
 import { Route, BrowserRouter, Routes } from "react-router-dom";
-import BagItems from "./Bag/BagItems";
+import BagItemsPage from "./Bag/BagItemsPage";
 import ItemPage from "./ItemPage";
 
 const Content:FC = () => {
@@ -43,7 +43,7 @@ const Content:FC = () => {
                 <Routes>
                     <Route path='/' element={<ItemList products={productList} />}/>
                     <Route path='/product/:id' element={<ItemPage />} />
-                    <Route path='/bag' element={<BagItems />} />
+                    <Route path='/bag' element={<BagItemsPage />} />
                 </Routes>
             </BrowserRouter>
         </div>

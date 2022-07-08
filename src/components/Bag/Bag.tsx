@@ -7,7 +7,9 @@ import Button from "../Button";
 
 const Bag = () => {
     return (
-        <div className="bag border-l-4 border-gray-500 mt-12 w-[22rem]">
+        <div className="bag mt-12 w-[22rem]">
+            <div className="divider border-l-4 h-[821px] border-gray-500 absolute" ></div>
+
             <h2 className="text-4xl text-[#1A1F16] text-center mt-6">Bag</h2>
 
             <div className="bag-items w-[18rem] h-[18rem] flex justify-between items-baseline gap-4 grid-cols-4 grid-rows-3 flex-wrap items-center ml-8 mt-[18px] justify-between">
@@ -32,11 +34,7 @@ const Bag = () => {
                 </div>
             </div>
             <Button
-                bgColor="#1A1F16"
-                textColor="#FFFFFF"
                 image={viewBagIcon}
-                width="160px"
-                radius="14px"
                 children="Checkout"
                 onClick={() => console.log("You clicked on the orange circle!")}
             />

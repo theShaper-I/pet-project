@@ -1,12 +1,15 @@
 import React, {FC} from 'react';
 import ItemCard from "./ProductItem/ItemCard";
 import {Product} from "./ProductItem/product.types";
+import {useNavigate} from "react-router-dom";
 
 interface ProductListProps {
     products: Product[];
 }
 
 const ItemList: FC<ProductListProps> = ({products}) => {
+    const navigate = useNavigate()
+
     return (
         <div className="item-list mt-8 ml-14 mr-14 w-[60rem]">
             <div className="search-bar grid justify-center items-center">
@@ -15,7 +18,7 @@ const ItemList: FC<ProductListProps> = ({products}) => {
             </div>
             <div className="items-list mt-12 flex justify-between gap-4 grid-cols-4 grid-rows-3 flex-wrap">
                 {products.map(product =>
-                    <ItemCard key={product.productId} product={product}/>
+                    <ItemCard onClick={(product) => navigate('/product/' + product.productId)} key={product.productId} product={product}/>
                 )}
             </div>
         </div>
