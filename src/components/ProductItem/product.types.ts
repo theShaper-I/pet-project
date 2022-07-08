@@ -1,4 +1,9 @@
-type ProductType = "phone" | "notebook" | "headphones" | "watch";
+export enum ProductType {
+    Phone = 'Phone',
+    Laptop = 'Laptop',
+    Headphones = 'Headphones',
+    Watch = 'Watch',
+}
 
 export interface Product {
     productId: number;
@@ -9,6 +14,6 @@ export interface Product {
     price: number;
     photoPath: string;
     quantity: number;
-    onClick: () => void;
+    onClick?: () => void;
     type: ProductType;
 }
