@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { Route, BrowserRouter, Routes } from 'react-router-dom';
 import ProductsList from '../../pages/ProductsList';
-import KartProductsPage from '../../pages/KartProductsPage';
+import CartProductsPage from '../../pages/CartProductsPage';
 import ProductPage from '../../pages/ProductPage';
 import { productList } from '../../utils/products.utils';
 
@@ -11,7 +11,7 @@ const Content: FC = () => (
       <Routes>
         <Route path="/" element={<ProductsList products={productList} />} />
         <Route path="/product/:id" element={<ProductPage />} />
-        <Route path="/bag" element={<KartProductsPage />} />
+        <Route path="/bag" element={<CartProductsPage />} />
       </Routes>
     </BrowserRouter>
   </div>

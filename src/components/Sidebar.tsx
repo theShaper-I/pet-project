@@ -19,7 +19,7 @@ function Sidebar({ className }: SidebarProps) {
       <div
         className={clsx(
           'sidebar fixed flex-col items-center p-4 mt-[16px] w-[72px] h-[904px] left-4 bg-white rounded-lg',
-          className,
+          className
         )}
       >
         <div className="sidebar-items flex flex-col justify-between items-center h-[270px] mt-4">

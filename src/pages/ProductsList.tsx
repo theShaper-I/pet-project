@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ProductItem from '../components/ProductItem';
 import { Product } from '../types/product.types';
@@ -23,7 +23,8 @@ const ProductsList: FC<ProductListProps> = ({ products }) => {
       <div className="items-list mt-12 flex justify-between gap-4 grid-cols-4 grid-rows-3 flex-wrap">
         {products.map((product) => (
           <ProductItem
-            onClick={(product) => navigate(`/product/${product.productId}`)}
+            handleOpenProductPage={(product) => navigate(`/product/${product.productId}`)}
+            handleAddToCart={(product) => navigate(`/bag/${product.productId}`)}
             key={product.productId}
             product={product}
           />
