@@ -6,7 +6,7 @@ import { Product, ProductType } from '../types/product.types';
 interface ProductItemProps {
   product: Product;
   handleOpenProductPage: (product: Product) => void;
-  handleAddToCart: (clickedItem: Product) => void;
+  handleAddToCart: (product: Product) => void;
 }
 
 const ProductItem: FC<ProductItemProps> = ({ product, handleOpenProductPage, handleAddToCart }) => (

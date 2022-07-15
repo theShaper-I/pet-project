@@ -17,3 +17,5 @@ export interface Product {
   onClick?: () => void;
   type: ProductType;
 }
+
+export type ProductsList = Product[];
