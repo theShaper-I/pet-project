@@ -1,8 +1,8 @@
-import React, {FC, useEffect, useState} from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ProductItem from '../components/ProductItem';
 import { Product } from '../types/product.types';
-import CART from '../components/CART';
+import CART from '../utils/CART';
 
 interface ProductListProps {
   products: Product[];
@@ -10,13 +10,6 @@ interface ProductListProps {
 
 const ProductsList: FC<ProductListProps> = ({ products }) => {
   const navigate = useNavigate();
-
-  useEffect(() => {
-    CART.init()
-    products.map((product) => (
-        CART.findItem(product.productId)
-    ))
-  }, [CART]);
 
   return (
     <div className="item-list mt-8 ml-14 mr-14 w-[60rem]">

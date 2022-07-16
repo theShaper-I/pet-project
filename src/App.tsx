@@ -8,10 +8,10 @@ import { productList } from './utils/products.utils';
 
 function App() {
   return (
-    <div className="container mx-auto justify-center flex">
+    <div className="container justify-between flex">
       <Sidebar />
       <Content />
-      <CartView product={productList} />
+      <CartView products={productList} />
     </div>
   );
 }

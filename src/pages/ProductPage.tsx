@@ -2,14 +2,15 @@ import React, { FC, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Product } from '../types/product.types';
 import arrowLeft from '../assets/arrow-left.svg';
-import Button from '../components/UI/Button';
 import buyIcon from '../assets/buy-icon.svg';
 import { productList } from '../utils/products.utils';
+
+import Button from '../components/UI/Button';
+
 
 const ProductPage: FC = () => {
   const [item, setItem] = useState<Product | null>();
   const navigate = useNavigate();
-
   const { id } = useParams();
 
   useEffect(() => {

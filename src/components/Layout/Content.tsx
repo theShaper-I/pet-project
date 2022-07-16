@@ -6,12 +6,12 @@ import ProductPage from '../../pages/ProductPage';
 import { productList } from '../../utils/products.utils';
 
 const Content: FC = () => (
-  <div className="content">
+  <div className="content w-3/5 mx-auto">
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<ProductsList products={productList} />} />
         <Route path="/product/:id" element={<ProductPage />} />
-        <Route path="/bag" element={<CartProductsPage />} />
+        <Route path="/bag" element={<CartProductsPage  products={productList}/>} />
       </Routes>
     </BrowserRouter>
   </div>
