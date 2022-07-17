@@ -17,7 +17,7 @@ function CartView({ className, products }: CartProps) {
   }, [CART.items]);
 
   return (
-    <div className={clsx("bag mt-12 w-[22rem]", className)}>
+    <div className={clsx("bag mt-12 w-1/5", className)}>
       <div className="divider border-l-4 h-[821px] border-gray-500 absolute" />
 
       <h2 className="text-4xl text-[#1A1F16] text-center mt-6">Bag</h2>
@@ -27,7 +27,7 @@ function CartView({ className, products }: CartProps) {
           <CartItem key={product.productId} photoPath={product.photoPath} quantity={product.quantity} />
         ))}
       </div>
-      <div className={'text-[20px] block mx-auto'}>Bag Total: </div>
+      <div className={'text-[20px] block text-center'}>Bag Total: </div>
       <Button
         image={viewBagIcon}
         buttonText="View Bag"
