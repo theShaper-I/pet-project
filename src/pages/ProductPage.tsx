@@ -7,7 +7,6 @@ import { productList } from '../utils/products.utils';
 
 import Button from '../components/UI/Button';
 
-
 const ProductPage: FC = () => {
   const [item, setItem] = useState<Product | null>();
   const navigate = useNavigate();
@@ -25,20 +24,20 @@ const ProductPage: FC = () => {
         <button className="ml-4 text-xl">Back</button>
       </div>
       <div className="flex mt-[24px]">
-        <div className="image-bg w-[258px] h-[318px] bg-white rounded-3xl ml-[44px]">
-          <img className={'block mx-auto p-4'} src={item?.photoPath} alt="item-card-image" />
+        <div className="image-bg  flex w-[258px] h-[318px] bg-white rounded-3xl ml-[44px]">
+          <img className={'block mx-auto p-4 object-contain'} src={item?.photoPath} alt="item-card-image" />
         </div>
         <div className="ml-10 block">
           <div className="text-6xl text-[#1A1F16]">{item?.productTitle}</div>
           <div className="text-[32px] text-[#60695C] mt-2">{item?.productSubTitle}</div>
           <div className="text-[28px] text-[#1A1F16] font-medium mt-8">{`$ ${item?.price}`}</div>
           <div className="w-[540px] text-[20px] font-normal mt-2">{item?.shortDescription}</div>
-          <div>
+          <div className="btn-wrap relative">
             <Button image={buyIcon} onClick={() => console.log('click')} buttonText="Add to bag" />
           </div>
         </div>
       </div>
-      <div className="divider border-b-4 w-[920px] mx-auto border-gray-500 mt-[40px]" />
+      <div className="divider border-b-4 w-[920px] mx-auto border-gray-500 mt-[40px] rounded-2xl" />
       <div className="mt-8 text-[32px] text-[#1A1F16]">Description</div>
       <div className="text-[#60695C] text-[20px] mt-2">{item?.fullDescription}</div>
     </div>

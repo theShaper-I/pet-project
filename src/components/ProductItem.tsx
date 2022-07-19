@@ -21,15 +21,19 @@ const ProductItem: FC<ProductItemProps> = ({ product, handleOpenProductPage, han
     <div
       onClick={() => handleOpenProductPage(product)}
       className={clsx(
-        product.type === ProductType.Phone && 'image-bg w-[190px] h-[232px] bg-white rounded-3xl cursor-pointer',
+        product.type === ProductType.Phone && 'image-bg w-[190px] h-[232px] bg-white rounded-3xl cursor-pointer ',
         product.type === ProductType.Watch && 'image-bg w-[190px] h-[232px] bg-white rounded-3xl cursor-pointer',
         product.type === ProductType.Headphones && 'image-bg w-[190px] h-[232px] bg-white rounded-3xl cursor-pointer',
         product.type === ProductType.Laptop && 'image-bg w-[427px] h-[232px] bg-white rounded-3xl cursor-pointer'
       )}
     >
-      <img className="block mx-auto p-4 hover:p-0 duration-500 w-full" src={product.photoPath} alt="item-card-image" />
+      <img
+        className="block mx-auto p-4 hover:p-0 duration-500 w-full object-contain"
+        src={product.photoPath}
+        alt="item-card-image"
+      />
     </div>
-    <div className="title pl-2 pt-4 text-[#1A1F16] text-xl font-medium">{product.productTitle}</div>
+    <div className="title pl-2 pt-4 text-[#1A1F16] text-xl font-medium whitespace-nowrap">{product.productTitle}</div>
     <div className="subTitle pl-2 pt-2 text-[#60695C] text-base">{product.productSubTitle}</div>
     <div className="wrap flex justify-between p-2">
       <div className="pl-2 text-xl font-medium mt-1">$ {product.price}</div>

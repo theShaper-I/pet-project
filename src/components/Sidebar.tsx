@@ -15,39 +15,35 @@ function Sidebar({ className }: SidebarProps) {
   const [bagHover, setBagHover] = useState(false);
 
   return (
-    <Router>
-      <div
-        className={clsx(
-          'sidebar fixed flex-col items-center p-4 mt-[16px] w-[72px] h-[904px] left-4 bg-white rounded-lg',
-          className
-        )}
-      >
-        <div className="sidebar-items flex flex-col justify-between items-center h-[270px] mt-4">
-          <Link to="/">
-            <div className="sidebar-item border-y-gray-900 rounded-xl">
-              <img src={logo} alt="logo" className="hover:opacity-25" />
-            </div>
-          </Link>
-          <div className="sidebar-item">
-            <img src={menuIcon} alt="menu-icon" />
-          </div>
-          <Link to="/">
-            <div
-              className="sidebar-item"
-              onMouseOver={() => setStoreHover(true)}
-              onMouseOut={() => setStoreHover(false)}
-            >
-              <img src={storeHover ? storeIconHovered : storeIcon} alt="store-icon" />
-            </div>
-          </Link>
-          <Link to="/bag">
-            <div className="sidebar-item" onMouseOver={() => setBagHover(true)} onMouseOut={() => setBagHover(false)}>
-              <img src={bagHover ? bagIconHovered : bagIcon} alt="bag-icon" />
-            </div>
-          </Link>
+    <div
+      className={clsx(
+        'sidebar fixed flex-col items-center p-4 mt-[16px] w-[72px] h-[904px] left-4 bg-white rounded-lg',
+        className
+      )}
+    >
+      <div className="sidebar-items flex flex-col justify-between items-center h-[270px] mt-4">
+        <div className="sidebar-item-logo border-y-gray-900 rounded-xl">
+          <img src={logo} alt="logo" />
         </div>
+        <div className="sidebar-item-menu">
+          <img src={menuIcon} alt="menu-icon" />
+        </div>
+        <Link to="/">
+          <div
+            className="sidebar-item-products"
+            onMouseOver={() => setStoreHover(true)}
+            onMouseOut={() => setStoreHover(false)}
+          >
+            <img src={storeHover ? storeIconHovered : storeIcon} alt="store-icon" />
+          </div>
+        </Link>
+        <Link to="/bag">
+          <div className="sidebar-item-bag" onMouseOver={() => setBagHover(true)} onMouseOut={() => setBagHover(false)}>
+            <img src={bagHover ? bagIconHovered : bagIcon} alt="bag-icon" />
+          </div>
+        </Link>
       </div>
-    </Router>
+    </div>
   );
 }
 

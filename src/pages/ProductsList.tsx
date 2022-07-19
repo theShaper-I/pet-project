@@ -9,6 +9,7 @@ interface ProductListProps {
 }
 
 const ProductsList: FC<ProductListProps> = ({ products }) => {
+  const [searchTerm, setSearchTerm] = useState('');
   const navigate = useNavigate();
 
   return (
@@ -19,17 +20,28 @@ const ProductsList: FC<ProductListProps> = ({ products }) => {
           className="text-[#1A1F1680] w-[32rem] text-xl p-4 rounded-[13px] mt-2 pl-6 pr-6 shadow-lg"
           type="text"
           placeholder="Apple Watch, Samsung S21, Macbook Pro, ..."
+          onChange={(event) => {
+            setSearchTerm(event.target.value);
+          }}
         />
       </div>
       <div className="items-list mt-12 flex justify-between gap-4 grid-cols-4 grid-rows-3 flex-wrap">
-        {products.map((product) => (
-          <ProductItem
-            handleOpenProductPage={(product) => navigate(`/product/${product.productId}`)}
-            handleAddToCart={(product) => CART.addItem(products, product.productId)}
-            key={product.productId}
-            product={product}
-          />
-        ))}
+        {products
+          .filter((val) => {
+            if (searchTerm == '') {
+              return val;
+            } else if (val.productTitle.toLowerCase().includes(searchTerm.toLowerCase())) {
+              return val;
+            }
+          })
+          .map((product) => (
+            <ProductItem
+              handleOpenProductPage={(product) => navigate(`/product/${product.productId}`)}
+              handleAddToCart={(product) => CART.addItem(products, product.productId)}
+              key={product.productId}
+              product={product}
+            />
+          ))}
       </div>
     </div>
   );
