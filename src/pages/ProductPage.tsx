@@ -6,7 +6,6 @@ import { Product } from '../types/product.types';
 
 import Button from '../components/UI/Button';
 
-
 import arrowLeft from '../assets/arrow-left.svg';
 import buyIcon from '../assets/buy-icon.svg';
 
@@ -36,7 +35,7 @@ const ProductPage: FC = () => {
           <div className="text-[32px] text-[#60695C] mt-2">{item?.productSubTitle}</div>
           <div className="text-[28px] text-[#1A1F16] font-medium mt-8">{`$ ${item?.price}`}</div>
           <div className="w-[540px] text-[20px] font-normal mt-2">{item?.shortDescription}</div>
-          <div className="btn-wrap relative">
+          <div className="btn-wrap flex flex-">
             <Button image={buyIcon} onClick={() => increaseCartQuantity(item?.productId as number)} buttonText="Add to bag" />
           </div>
         </div>
