@@ -1,9 +1,9 @@
-import {createContext, ReactNode, useContext, useState} from 'react';
-import {useLocalStorage} from "../hooks/useLocalStorage";
+import { createContext, ReactNode, useContext, useState } from 'react'
+import { useLocalStorage } from '../hooks/useLocalStorage'
 
 type ShoppingCartProviderProps = {
-  children: ReactNode;
-};
+  children: ReactNode
+}
 
 type CartItem = {
   id: number
@@ -18,30 +18,27 @@ type ShoppingCartContext = {
   cartItems: CartItem[]
 }
 
-const ShoppingCartContext = createContext({} as ShoppingCartContext);
+const ShoppingCartContext = createContext({} as ShoppingCartContext)
 
 export function useShoppingCart() {
-  return useContext(ShoppingCartContext);
+  return useContext(ShoppingCartContext)
 }
 
 export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
   const [cartItems, setCartItems] = useLocalStorage<CartItem[]>('shopping-cart', [])
 
-  const cartQuantity = cartItems.reduce(
-      (quantity, item) => item.quantity + quantity,
-      0
-  )
+  const cartQuantity = cartItems.reduce((quantity, item) => item.quantity + quantity, 0)
 
   function getItemQuantity(id: number) {
-    return cartItems.find(item => item.id === id)?.quantity || 0
+    return cartItems.find((item) => item.id === id)?.quantity || 0
   }
 
   function increaseCartQuantity(id: number) {
-    setCartItems(currItems => {
-      if (currItems.find(item => item.id === id) == null) {
+    setCartItems((currItems) => {
+      if (currItems.find((item) => item.id === id) == null) {
         return [...currItems, { id, quantity: 1 }]
       } else {
-        return currItems.map(item => {
+        return currItems.map((item) => {
           if (item.id === id) {
             return { ...item, quantity: item.quantity + 1 }
           } else {
@@ -53,11 +50,11 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
   }
 
   function decreaseCartQuantity(id: number) {
-    setCartItems(currItems => {
-      if (currItems.find(item => item.id === id)?.quantity === 1) {
-        return currItems.filter(item => item.id !== id)
+    setCartItems((currItems) => {
+      if (currItems.find((item) => item.id === id)?.quantity === 1) {
+        return currItems.filter((item) => item.id !== id)
       } else {
-        return currItems.map(item => {
+        return currItems.map((item) => {
           if (item.id === id) {
             return { ...item, quantity: item.quantity - 1 }
           } else {
@@ -69,8 +66,16 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
   }
 
   return (
-      <ShoppingCartContext.Provider value={{getItemQuantity, increaseCartQuantity, decreaseCartQuantity, cartItems, cartQuantity}}>
-        {children}
-      </ShoppingCartContext.Provider>
-  );
+    <ShoppingCartContext.Provider
+      value={{
+        getItemQuantity,
+        increaseCartQuantity,
+        decreaseCartQuantity,
+        cartItems,
+        cartQuantity,
+      }}
+    >
+      {children}
+    </ShoppingCartContext.Provider>
+  )
 }

@@ -19,8 +19,6 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "preserve"
-  },
-  "include": [
-    "src"
-  ]
+  }, "include": ["src/components", "src/custom.d.ts"],
+  "files": ["custom.d.ts"]
 }

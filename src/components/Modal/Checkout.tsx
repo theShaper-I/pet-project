@@ -1,20 +1,20 @@
-import React, { useEffect, useState } from 'react';
-import clsx from 'clsx';
-import masterCardIcon from '../../assets/mastercard-icon.svg';
-import giftIcon from '../../assets/gift-icon.svg';
-import arrowLeft from '../../assets/arrow-left.svg';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react'
+import clsx from 'clsx'
+import masterCardIcon from '../../assets/mastercard-icon.svg'
+import giftIcon from '../../assets/gift-icon.svg'
+import arrowLeft from '../../assets/arrow-left.svg'
+import { useNavigate } from 'react-router-dom'
 
-type CheckoutProps = {} & React.ComponentProps<'div'>;
+type CheckoutProps = {} & React.ComponentProps<'div'>
 
 function Checkout({ className }: CheckoutProps) {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   return (
     <div
       className={clsx(
         'checkout pt-[56px] fixed w-full h-full z-10 flex bg-[#E5E5E5] mx-auto justify-center',
-        className
+        className,
       )}
     >
       <div className={'shipping display block'}>
@@ -52,8 +52,10 @@ function Checkout({ className }: CheckoutProps) {
             </div>
 
             <div className={'billing-address-wrapper mt-2 flex items-center'}>
-              <input type="checkbox" className="indeterminate:bg-gray-300 w-4 h-4 mr-2" />
-              <div className={'billing-address text-xl'}>Billing address same as Shipping Address</div>
+              <input type='checkbox' className='indeterminate:bg-gray-300 w-4 h-4 mr-2' />
+              <div className={'billing-address text-xl'}>
+                Billing address same as Shipping Address
+              </div>
             </div>
           </div>
           <button
@@ -96,21 +98,27 @@ function Checkout({ className }: CheckoutProps) {
           </div>
           <div className={'divider w-52 border-[1px] mt-4'} />
 
-          <button className={'order-btn w-52 h-9 rounded-[11px] bg-[#1A1F16] text-white mt-4'}>Place your order</button>
+          <button className={'order-btn w-52 h-9 rounded-[11px] bg-[#1A1F16] text-white mt-4'}>
+            Place your order
+          </button>
         </div>
 
         <div className={'flex justify-end'}>
           <button
             onClick={() => navigate('/')}
-            className="p-2 border-2 w-[111px] border-[#1A1F16] rounded-[11px] text-[#1A1F16] text-base relative pl-[38px] mt-[35px]"
+            className='p-2 border-2 w-[111px] border-[#1A1F16] rounded-[11px] text-[#1A1F16] text-base relative pl-[38px] mt-[35px]'
           >
             Back
-            <img className={'absolute top-3 w-[10px] left-[32px]'} src={arrowLeft} alt={'arrow-left'} />
+            <img
+              className={'absolute top-3 w-[10px] left-[32px]'}
+              src={arrowLeft}
+              alt={'arrow-left'}
+            />
           </button>
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default Checkout;
+export default Checkout
