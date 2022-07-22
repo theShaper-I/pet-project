@@ -9,8 +9,22 @@ interface ProductListProps {
 }
 
 const ProductsList: FC<ProductListProps> = ({ products }) => {
-  const [searchTerm, setSearchTerm] = useState('');
   const navigate = useNavigate();
+  const [searchTerm, setSearchTerm] = useState('');
+  const [cartItems, setCartItems] = useState([] as Product[]);
+  const [isAddToCartClicked, setIsAddToCartClicked] = useState(false);
+
+  const handleAddToCart = (product: Product) => {
+    CART.addItem(products, product.productId);
+    setCartItems(CART.items);
+    setIsAddToCartClicked(true);
+  };
+
+  useEffect(() => {
+    setCartItems(CART.items);
+    setIsAddToCartClicked(false);
+    console.log(cartItems)
+  }, [cartItems, CART.items, isAddToCartClicked])
 
   return (
     <div className="item-list mt-8 ml-14 mr-14 w-[60rem]">
@@ -37,7 +51,7 @@ const ProductsList: FC<ProductListProps> = ({ products }) => {
           .map((product) => (
             <ProductItem
               handleOpenProductPage={(product) => navigate(`/product/${product.productId}`)}
-              handleAddToCart={(product) => CART.addItem(products, product.productId)}
+              handleAddToCart={() => handleAddToCart(product)}
               key={product.productId}
               product={product}
             />

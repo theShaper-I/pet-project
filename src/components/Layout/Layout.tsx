@@ -9,9 +9,9 @@ import AddPayment from '../Modal/AddPayment';
 function Layout() {
   return (
     <div className="flex">
-      <Checkout />
-      <AddPayment />
-      <Sidebar className="" />
+      {/*<Checkout />*/}
+      {/*<AddPayment />*/}
+      <Sidebar className=""/>
       <Content />
       <CartView products={productList} />
     </div>

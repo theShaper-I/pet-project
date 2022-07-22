@@ -5,19 +5,12 @@ import viewBagIcon from '../../assets/view-bag-icon.svg';
 import Button from '../UI/Button';
 import CartItem from './CartItem';
 import clsx from 'clsx';
-import { useNavigate } from 'react-router-dom';
 
 type CartProps = {
   products: Product[];
 } & React.ComponentProps<'div'>;
 
-function CartView({ className, products }: CartProps) {
-  const [cart, setCart] = useState([]);
-
-  useEffect(() => {
-    CART.init();
-    console.log(CART.items);
-  }, [CART.items]);
+function CartView({ className, products, cartItems }: CartProps) {
 
   return (
     <div className={clsx('bag mt-12 w-1/5', className)}>
@@ -26,7 +19,7 @@ function CartView({ className, products }: CartProps) {
       <h2 className="text-4xl text-[#1A1F16] text-center mt-6">Bag</h2>
 
       <div className="bag-items w-[18rem] min-h-[18rem] flex justify-between items-baseline gap-4 grid-cols-4 grid-rows-3 flex-wrap items-center ml-8 mt-[18px] justify-between">
-        {CART.items.map((product) => (
+        {cartItems.map((product) => (
           <CartItem key={product.productId} photoPath={product.photoPath} quantity={product.quantity} />
         ))}
       </div>
