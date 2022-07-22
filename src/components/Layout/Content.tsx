@@ -1,9 +1,11 @@
 import React, { FC } from 'react';
-import { Route, Routes } from 'react-router-dom';
-import ProductsList from '../../pages/ProductsList';
-import CartProductsPage from '../../pages/CartProductsPage';
-import ProductPage from '../../pages/ProductPage';
 import { productList } from '../../utils/products.utils';
+
+import { Route, Routes } from 'react-router-dom';
+
+import ProductsList from '../../pages/ProductsList';
+import ProductPage from '../../pages/ProductPage';
+import CartProductsPage from '../../pages/CartProductsPage';
 
 const Content: FC = ({}) => (
   <div className="content mx-auto">

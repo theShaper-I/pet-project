@@ -1,10 +1,9 @@
 import React, { FC, useState } from 'react';
+import { useShoppingCart } from "../context/ShoppingCartContext";
 import { useNavigate } from 'react-router-dom';
-import ProductItem from '../components/ProductItem';
 import { Product } from '../types/product.types';
 
-import useLocalStorage from 'react-query/types/devtools/useLocalStorage';
-import {useShoppingCart} from "../context/ShoppingCartContext";
+import ProductItem from '../components/ProductItem';
 
 interface ProductListProps {
   products: Product[];

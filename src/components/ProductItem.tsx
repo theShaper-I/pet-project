@@ -1,7 +1,9 @@
 import React, { FC } from 'react';
-import clsx from 'clsx';
-import buyIcon from '../assets/buy-icon.svg';
 import { Product, ProductType } from '../types/product.types';
+
+import clsx from 'clsx';
+
+import buyIcon from '../assets/buy-icon.svg';
 
 interface ProductItemProps {
   product: Product;

@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Link } from 'react-router-dom';
+
+import { Link } from 'react-router-dom';
+
 import clsx from 'clsx';
+
 import logo from '../assets/logo.svg';
 import menuIcon from '../assets/menu.svg';
-import storeIcon from '../assets/store.svg';
-import storeIconHovered from '../assets/store-black.svg';
 import bagIcon from '../assets/bag.svg';
 import bagIconHovered from '../assets/bag-black.svg';
+import storeIcon from '../assets/store.svg';
+import storeIconHovered from '../assets/store-black.svg';
 
 type SidebarProps = {} & React.ComponentProps<'div'>;
 

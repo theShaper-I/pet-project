@@ -1,9 +1,12 @@
 import React from 'react';
-import './index.css';
-import './scss/sidebar.scss';
+
 import Sidebar from './components/Sidebar';
 import Content from './components/Layout/Content';
 import CartView from './components/Cart/CartView';
+
+import './index.css';
+import './scss/sidebar.scss';
+
 import { ShoppingCartProvider } from './context/ShoppingCartContext';
 
 function App() {

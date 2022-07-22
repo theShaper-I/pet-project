@@ -1,7 +1,7 @@
 import React from 'react';
+import { useShoppingCart } from "../context/ShoppingCartContext";
+
 import CartProductItem from '../components/Cart/CartProductItem';
-import { Product } from '../types/product.types';
-import {useShoppingCart} from "../context/ShoppingCartContext";
 
 type CartProductsPageProps = {
 } & React.ComponentProps<'div'>;

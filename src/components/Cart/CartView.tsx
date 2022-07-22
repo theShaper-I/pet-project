@@ -1,9 +1,12 @@
 import React from 'react';
-import viewBagIcon from '../../assets/view-bag-icon.svg';
+import { useShoppingCart } from "../../context/ShoppingCartContext";
+
 import Button from '../UI/Button';
 import CartItem from './CartItem';
+
 import clsx from 'clsx';
-import {useShoppingCart} from "../../context/ShoppingCartContext";
+
+import viewBagIcon from '../../assets/view-bag-icon.svg';
 
 type CartProps = {
 } & React.ComponentProps<'div'>;

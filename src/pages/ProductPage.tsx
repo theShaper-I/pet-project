@@ -1,10 +1,11 @@
 import React, { FC, useEffect, useState } from 'react';
+import { useShoppingCart } from "../context/ShoppingCartContext";
 import { useNavigate, useParams } from 'react-router-dom';
-import { Product } from '../types/product.types';
 import { productList } from '../utils/products.utils';
+import { Product } from '../types/product.types';
 
 import Button from '../components/UI/Button';
-import {useShoppingCart} from "../context/ShoppingCartContext";
+
 
 import arrowLeft from '../assets/arrow-left.svg';
 import buyIcon from '../assets/buy-icon.svg';

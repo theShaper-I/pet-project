@@ -1,9 +1,12 @@
 import React from 'react';
+import { useShoppingCart } from "../../context/ShoppingCartContext";
+
+import {productList} from "../../utils/products.utils";
+
 import clsx from 'clsx';
+
 import increaseIcon from '../../assets/increase-icon.svg';
 import decreaseIcon from '../../assets/decrease-icon.svg';
-import {productList} from "../../utils/products.utils";
-import {useShoppingCart} from "../../context/ShoppingCartContext";
 
 interface CartProductItemProps {
   id: number;
