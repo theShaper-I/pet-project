@@ -1,13 +1,20 @@
 import React from 'react';
 import './index.css';
 import './scss/sidebar.scss';
-import Layout from './components/Layout/Layout';
+import Sidebar from './components/Sidebar';
+import Content from './components/Layout/Content';
+import CartView from './components/Cart/CartView';
+import { ShoppingCartProvider } from './context/ShoppingCartContext';
 
 function App() {
   return (
-    <div className="app relative">
-      <Layout />
-    </div>
+    <ShoppingCartProvider>
+      <div className={'flex'}>
+        <Sidebar className="" />
+        <Content />
+        <CartView />
+      </div>
+    </ShoppingCartProvider>
   );
 }
 

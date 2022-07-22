@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import clsx from 'clsx';
 import masterCardIcon from '../../assets/mastercard-icon.svg';
 import giftIcon from '../../assets/gift-icon.svg';
@@ -8,7 +8,6 @@ import { useNavigate } from 'react-router-dom';
 type CheckoutProps = {} & React.ComponentProps<'div'>;
 
 function Checkout({ className }: CheckoutProps) {
-
   const navigate = useNavigate();
 
   return (

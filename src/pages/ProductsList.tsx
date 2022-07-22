@@ -1,30 +1,20 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ProductItem from '../components/ProductItem';
 import { Product } from '../types/product.types';
-import CART from '../utils/CART';
+
+import useLocalStorage from 'react-query/types/devtools/useLocalStorage';
+import {useShoppingCart} from "../context/ShoppingCartContext";
 
 interface ProductListProps {
   products: Product[];
 }
 
 const ProductsList: FC<ProductListProps> = ({ products }) => {
+  const { increaseCartQuantity } = useShoppingCart()
+
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState('');
-  const [cartItems, setCartItems] = useState([] as Product[]);
-  const [isAddToCartClicked, setIsAddToCartClicked] = useState(false);
-
-  const handleAddToCart = (product: Product) => {
-    CART.addItem(products, product.productId);
-    setCartItems(CART.items);
-    setIsAddToCartClicked(true);
-  };
-
-  useEffect(() => {
-    setCartItems(CART.items);
-    setIsAddToCartClicked(false);
-    console.log(cartItems)
-  }, [cartItems, CART.items, isAddToCartClicked])
 
   return (
     <div className="item-list mt-8 ml-14 mr-14 w-[60rem]">
@@ -51,7 +41,7 @@ const ProductsList: FC<ProductListProps> = ({ products }) => {
           .map((product) => (
             <ProductItem
               handleOpenProductPage={(product) => navigate(`/product/${product.productId}`)}
-              handleAddToCart={() => handleAddToCart(product)}
+              handleAddToCart={() => increaseCartQuantity(product.productId)}
               key={product.productId}
               product={product}
             />

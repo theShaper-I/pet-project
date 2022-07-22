@@ -1,14 +1,17 @@
 import React, { FC, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Product } from '../types/product.types';
-import arrowLeft from '../assets/arrow-left.svg';
-import buyIcon from '../assets/buy-icon.svg';
 import { productList } from '../utils/products.utils';
 
 import Button from '../components/UI/Button';
+import {useShoppingCart} from "../context/ShoppingCartContext";
+
+import arrowLeft from '../assets/arrow-left.svg';
+import buyIcon from '../assets/buy-icon.svg';
 
 const ProductPage: FC = () => {
   const [item, setItem] = useState<Product | null>();
+  const { increaseCartQuantity } = useShoppingCart()
   const navigate = useNavigate();
   const { id } = useParams();
 
@@ -33,7 +36,7 @@ const ProductPage: FC = () => {
           <div className="text-[28px] text-[#1A1F16] font-medium mt-8">{`$ ${item?.price}`}</div>
           <div className="w-[540px] text-[20px] font-normal mt-2">{item?.shortDescription}</div>
           <div className="btn-wrap relative">
-            <Button image={buyIcon} onClick={() => console.log('click')} buttonText="Add to bag" />
+            <Button image={buyIcon} onClick={() => increaseCartQuantity(item?.productId as number)} buttonText="Add to bag" />
           </div>
         </div>
       </div>

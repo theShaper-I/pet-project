@@ -1,16 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import CART from '../../utils/CART';
-import { Product } from '../../types/product.types';
+import React from 'react';
 import viewBagIcon from '../../assets/view-bag-icon.svg';
 import Button from '../UI/Button';
 import CartItem from './CartItem';
 import clsx from 'clsx';
+import {useShoppingCart} from "../../context/ShoppingCartContext";
 
 type CartProps = {
-  products: Product[];
 } & React.ComponentProps<'div'>;
 
-function CartView({ className, products, cartItems }: CartProps) {
+function CartView({ className }: CartProps) {
+  const { cartItems } = useShoppingCart()
 
   return (
     <div className={clsx('bag mt-12 w-1/5', className)}>
@@ -20,7 +19,7 @@ function CartView({ className, products, cartItems }: CartProps) {
 
       <div className="bag-items w-[18rem] min-h-[18rem] flex justify-between items-baseline gap-4 grid-cols-4 grid-rows-3 flex-wrap items-center ml-8 mt-[18px] justify-between">
         {cartItems.map((product) => (
-          <CartItem key={product.productId} photoPath={product.photoPath} quantity={product.quantity} />
+          <CartItem key={product.id} quantity={product.quantity}  id={product.id}/>
         ))}
       </div>
       {/*<div className={'text-[20px] block text-center'}>Bag Total: </div>*/}
