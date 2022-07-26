@@ -1,19 +1,20 @@
 import React from 'react'
-import { useShoppingCart } from '../../context/ShoppingCartContext'
+import { useShoppingCart } from '../context/ShoppingCartContext'
 
-import { productList } from '../../utils/products.utils'
+import { productList } from '../utils/products.utils'
 
 import clsx from 'clsx'
 
-import increaseIcon from '../../assets/increase-icon.svg'
-import decreaseIcon from '../../assets/decrease-icon.svg'
+import increaseIcon from '../assets/increase-icon.svg'
+import decreaseIcon from '../assets/decrease-icon.svg'
+import { formatCurrency } from '../utils/formatCurrency'
 
-interface CartProductItemProps {
+type CartProductItemProps = {
   id: number
   quantity: number
 }
 
-function CartProductItem({ id, quantity }: CartProductItemProps) {
+function ReviewBagItems({ id, quantity }: CartProductItemProps) {
   const { increaseCartQuantity, decreaseCartQuantity } = useShoppingCart()
 
   const item = productList.find((i) => i.productId === id)
@@ -21,9 +22,7 @@ function CartProductItem({ id, quantity }: CartProductItemProps) {
 
   return (
     <div
-      className={clsx(
-        'cart-product-item-wrapper min-w-[877px] min-h-[288px] bg-white rounded-3xl p-6 mb-[10px]',
-      )}
+      className={clsx('cart-product-item-wrapper min-h-[288px] bg-white rounded-3xl p-6 mb-[10px]')}
     >
       <div className='wrapper flex'>
         <img
@@ -41,7 +40,7 @@ function CartProductItem({ id, quantity }: CartProductItemProps) {
           <div className='h-[40px] mt-2'>rating</div>
           <div className='quantity-wrapper flex mt-2 relative min-w-[570px]'>
             <div className='product-item-sub-title text-[20px]'>
-              $ {item.price * quantity} x {quantity}
+              $ {formatCurrency(item.price * quantity)} x {quantity}
             </div>
             <div className='product-item-quantity flex text-[20px] absolute right-0 w-28 justify-around'>
               <button onClick={() => decreaseCartQuantity(id)} className={'btn-decrease'}>
@@ -55,8 +54,9 @@ function CartProductItem({ id, quantity }: CartProductItemProps) {
           </div>
         </div>
       </div>
+      <div className={'divider border-[1px] border-[#1A1F1680] mt-4'}></div>
     </div>
   )
 }
 
-export default CartProductItem
+export default ReviewBagItems

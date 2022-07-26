@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { productList } from '../../utils/products.utils'
+import { productList } from '../utils/products.utils'
 
 interface CartItemProps {
   id: number

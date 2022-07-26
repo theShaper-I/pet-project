@@ -10,10 +10,9 @@ interface ProductListProps {
 }
 
 const ProductsList: FC<ProductListProps> = ({ products }) => {
-  const { increaseCartQuantity } = useShoppingCart()
-
-  const navigate = useNavigate()
   const [searchTerm, setSearchTerm] = useState('')
+  const { increaseCartQuantity } = useShoppingCart()
+  const navigate = useNavigate()
 
   return (
     <div className='item-list mt-8 ml-14 mr-14 w-[60rem]'>

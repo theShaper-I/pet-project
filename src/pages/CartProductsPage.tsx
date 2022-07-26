@@ -1,7 +1,7 @@
 import React from 'react'
 import { useShoppingCart } from '../context/ShoppingCartContext'
 
-import CartProductItem from '../components/Cart/CartProductItem'
+import CartProductItem from '../components/CartProductItem'
 
 type CartProductsPageProps = {} & React.ComponentProps<'div'>
 

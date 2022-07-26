@@ -2,7 +2,7 @@ import React from 'react'
 
 import Sidebar from './components/Sidebar'
 import Content from './components/Layout/Content'
-import CartView from './components/Cart/CartView'
+import CartView from './components/CartView'
 
 import './index.css'
 import './scss/sidebar.scss'

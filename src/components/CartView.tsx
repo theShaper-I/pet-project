@@ -1,19 +1,21 @@
 import React from 'react'
-import { useShoppingCart } from '../../context/ShoppingCartContext'
+import { useShoppingCart } from '../context/ShoppingCartContext'
 
-import Button from '../UI/Button'
+import Button from './UI/Button'
 import CartItem from './CartItem'
 
 import clsx from 'clsx'
 
-import viewBagIcon from '../../assets/view-bag-icon.svg'
+import viewBagIcon from '../assets/view-bag-icon.svg'
 import { useNavigate } from 'react-router-dom'
+import { formatCurrency } from '../utils/formatCurrency'
+import { productList } from '../utils/products.utils'
 
 type CartProps = {} & React.ComponentProps<'div'>
 
 function CartView({ className }: CartProps) {
-  const navigate = useNavigate()
   const { cartItems } = useShoppingCart()
+  const navigate = useNavigate()
 
   return (
     <div className={clsx('bag mt-12 w-1/5', className)}>
@@ -26,7 +28,15 @@ function CartView({ className }: CartProps) {
           <CartItem key={product.id} quantity={product.quantity} id={product.id} />
         ))}
       </div>
-      {/*<div className={'text-[20px] block text-center'}>Bag Total: </div>*/}
+      <div className={'text-[20px] block text-center mt-8'}>
+        Bag Total: {'$ '}
+        {formatCurrency(
+          cartItems.reduce((total, cartItem) => {
+            const item = productList.find((i) => i.productId === cartItem.id)
+            return total + (item?.price || 0) * cartItem.quantity
+          }, 0),
+        )}
+      </div>
       <Button image={viewBagIcon} buttonText='View Bag' onClick={() => navigate('/bag')} />
     </div>
   )

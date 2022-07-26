@@ -4,6 +4,7 @@ import { Product, ProductType } from '../types/product.types'
 import clsx from 'clsx'
 
 import buyIcon from '../assets/buy-icon.svg'
+import { formatCurrency } from '../utils/formatCurrency'
 
 interface ProductItemProps {
   product: Product
@@ -44,7 +45,7 @@ const ProductItem: FC<ProductItemProps> = ({ product, handleOpenProductPage, han
     </div>
     <div className='subTitle pl-2 pt-2 text-[#60695C] text-base'>{product.productSubTitle}</div>
     <div className='wrap flex justify-between p-2'>
-      <div className='pl-2 text-xl font-medium mt-1'>$ {product.price}</div>
+      <div className='pl-2 text-xl font-medium mt-1'>$ {formatCurrency(product.price)}</div>
       <button
         onClick={() => handleAddToCart(product)}
         className='pr-4 w-[32px] h-[32px] rounded-lg bg-[#1A1F16] hover:opacity-70 duration-500'

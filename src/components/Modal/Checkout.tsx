@@ -4,20 +4,26 @@ import masterCardIcon from '../../assets/mastercard-icon.svg'
 import giftIcon from '../../assets/gift-icon.svg'
 import arrowLeft from '../../assets/arrow-left.svg'
 import { useNavigate } from 'react-router-dom'
+import { formatCurrency } from '../../utils/formatCurrency'
+import { productList } from '../../utils/products.utils'
+import { useShoppingCart } from '../../context/ShoppingCartContext'
+import CartProductItem from '../CartProductItem'
+import ReviewBagItems from '../ReviewBagItems'
 
 type CheckoutProps = {} & React.ComponentProps<'div'>
 
 function Checkout({ className }: CheckoutProps) {
   const navigate = useNavigate()
+  const { cartItems } = useShoppingCart()
 
   return (
     <div
       className={clsx(
-        'checkout pt-[56px] fixed w-full h-full z-10 flex bg-[#E5E5E5] mx-auto justify-center',
+        'checkout absolute w-full h-max z-10 flex bg-[#E5E5E5] mx-auto justify-center pt-14',
         className,
       )}
     >
-      <div className={'shipping display block'}>
+      <div className={'shipping block'}>
         <div className={'shipping-address w-[871px] h-[230px] relative bg-white rounded-xl p-4'}>
           <div className={'wrapper'}>
             <div className={'title text-[32px]'}>SHIPPING ADDRESS</div>
@@ -66,6 +72,12 @@ function Checkout({ className }: CheckoutProps) {
             Change
           </button>
         </div>
+
+        <div className={'review-bag relative bg-white rounded-xl p-6 mt-6 w-[871px]'}>
+          {cartItems.map((product) => (
+            <ReviewBagItems key={product.id} quantity={product.quantity} id={product.id} />
+          ))}
+        </div>
       </div>
 
       <div className={'order-wrapper'}>
@@ -73,7 +85,15 @@ function Checkout({ className }: CheckoutProps) {
           <div className={'order-title text-xl'}>Order Summary</div>
           <div className={'text-wrapper flex mt-4 justify-between'}>
             <div className={'items text-[#60695C] text-base'}>Items:</div>
-            <div className={'items-price text-[#60695C] text-base'}>${'5849.37'}</div>
+            <div className={'items-price text-[#60695C] text-base'}>
+              {'$ '}
+              {formatCurrency(
+                cartItems.reduce((total, cartItem) => {
+                  const item = productList.find((i) => i.productId === cartItem.id)
+                  return total + (item?.price || 0) * cartItem.quantity
+                }, 0),
+              )}
+            </div>
           </div>
 
           <div className={'text-wrapper flex mt-4 justify-between'}>
@@ -93,8 +113,16 @@ function Checkout({ className }: CheckoutProps) {
 
           <div className={'divider w-52 border-[1px] mt-4'} />
           <div className={'order-total-wrapper flex mt-4 justify-between'}>
-            <div className={'order-total text-[#E5252C] text-xl'}>Order Total:</div>
-            <div className={'order-total-price text-[#E5252C] text-xl'}>${'6609.78'}</div>
+            <div className={'order-total text-[#E5252C] text-xl'}>Order Total: </div>
+            <div className={'order-total-price text-[#E5252C] text-xl'}>
+              {'$ '}
+              {formatCurrency(
+                cartItems.reduce((total, cartItem) => {
+                  const item = productList.find((i) => i.productId === cartItem.id)
+                  return total + (item?.price || 0) * cartItem.quantity
+                }, 0) + 6.99,
+              )}
+            </div>
           </div>
           <div className={'divider w-52 border-[1px] mt-4'} />
 
